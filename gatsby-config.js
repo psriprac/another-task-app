@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 module.exports = {
   siteMetadata: {
     title: `another-task-app`,
@@ -17,5 +19,12 @@ module.exports = {
       "path": "./src/pages/"
     },
     __key: "pages"
+  }, {
+    resolve: `gatsby-source-mongodb`,
+    options: {
+      connectionString: `mongodb+srv://${process.env.TASKS_USER}:${process.env.TASKS_PWD}@cluster0.erxdh.mongodb.net/?retryWrites=true&w=majority`,
+      dbName: `task_app`,
+      collection: `tasks`
+    },
   }]
 };
